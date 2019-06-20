@@ -3581,14 +3581,18 @@ BOOMR_check_doc_domain();
 			// At this point someone is ready to send the beacon.  We send
 			// the beacon only if all plugins have finished doing what they
 			// wanted to do
-			for (k in this.plugins) {
-				if (this.plugins.hasOwnProperty(k)) {
-					if (impl.disabled_plugins[k]) {
-						continue;
-					}
-					if (!this.plugins[k].is_complete(impl.vars)) {
-						BOOMR.debug("Plugin " + k + " is not complete, deferring beacon send");
-						return false;
+			if(!BOOMR.getVar('api')) { // evite
+				// if it's an api beacon, don't care if plugins are ready or not... just go
+
+				for(k in this.plugins) {
+					if(this.plugins.hasOwnProperty(k)) {
+						if(impl.disabled_plugins[k]) {
+							continue;
+						}
+						if(!this.plugins[k].is_complete(impl.vars)) {
+							BOOMR.debug("Plugin " + k + " is not complete, deferring beacon send");
+							return false;
+						}
 					}
 				}
 			}
