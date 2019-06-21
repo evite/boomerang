@@ -1,7 +1,6 @@
 {
   "name": "boomerangjs",
-  "version": "1.650.0",
-  "releaseVersion": "ev1",
+  "version": "1.650.0-ev2",
   "description": "boomerang always comes back, except when it hits something",
   "main": "boomerang.js",
   "directories": {
