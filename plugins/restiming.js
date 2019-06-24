@@ -844,14 +844,15 @@
 	 * @param {number} from Only get timings from
 	 * @param {number} to Only get timings up to
 	 * @param {string[]} initiatorTypes Array of initiator types
+	 * @param {Frame} root optional root window object to collect
 	 *
 	 * @returns {ResourceTiming[]} Matching ResourceTiming entries
 	 * @memberof BOOMR.plugins.ResourceTiming
 	 */
-	function getFilteredResourceTiming(from, to, initiatorTypes) {
-		var entries = findPerformanceEntriesForFrame(BOOMR.window, true, 0, 0),
+	function getFilteredResourceTiming(from, to, initiatorTypes, root) {
+		var entries = findPerformanceEntriesForFrame(root || BOOMR.window, true, 0, 0),
 		    i, e,
-		    navStart = getNavStartTime(BOOMR.window), countCollector = {};
+		    navStart = getNavStartTime(root || BOOMR.window), countCollector = {};
 
 		if (!entries || !entries.length) {
 			return {
@@ -1252,16 +1253,17 @@
 	 *
 	 * @param {number} from Only get timings from
 	 * @param {number} to Only get timings up to
+	 * @param {Frame} root optional frame to collect resources
 	 *
 	 * @returns {object} An object containing the Optimized performance entries trie and
 	 * the optimized server timing lookup
 	 * @memberof BOOMR.plugins.ResourceTiming
 	 */
-	function getCompressedResourceTiming(from, to) {
+	function getCompressedResourceTiming(from, to, root) {
 		/*eslint no-script-url:0*/
 		var i, e, results = {}, initiatorType, url, data, timePoints = {};
 
-		var ret = getFilteredResourceTiming(from, to, impl.trackedResourceTypes);
+		var ret = getFilteredResourceTiming(from, to, impl.trackedResourceTypes, root);
 		var entries = ret.entries, serverTiming = ret.serverTiming;
 
 		if (!entries || !entries.length) {

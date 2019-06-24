@@ -1,7 +1,9 @@
 // This code is run after all plugins have initialized
 BOOMR.init({
-	beacon_url: (window.parent ? window.parent.BOOMR_config.beacon_url : window.BOOMR_config.beacon_url) ||
-		'https://eventhorizon.evitelabs.com/rum/',
+	beacon_url:
+		window.parent && window.parent.BOOMR_config &&
+		window.parent.BOOMR_config.beacon_url ||
+		"https://eventhorizon.evitelabs.com/rum/",
 	autorun: true,
 	beacon_interval: 60,
 	BW: {enabled: false},
