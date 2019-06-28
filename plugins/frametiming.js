@@ -116,7 +116,7 @@
 			/* END_DEBUG */
 
 			resources = BOOMR.plugins.ResourceTiming.getCompressedResourceTiming(
-				frame
+				null, null, frame
 			);
 
 			/* BEGIN_DEBUG */

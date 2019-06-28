@@ -120,7 +120,7 @@
 					for (var i = 0, l = entries.length; i < l; i++) {
 						var entry = entries[i];
 						res[entry.entryType] = res[entry.entryType] || {};
-						if(entry.name.match(/^boomr/)) continue;  // not interested - evite
+						if(!entry.name.match(/^evite:/)) continue;  // not interested - evite
 						if (entry.entryType === "mark") {
 							res[entry.entryType][entry.name] = entry.startTime;
 						}
