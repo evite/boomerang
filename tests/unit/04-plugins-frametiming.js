@@ -34,6 +34,7 @@ describe("BOOMR.plugins.FrameTiming", function() {
 			// need to be updated.
 			//
 
+			BOOMR.removeVar('restiming');
 			BOOMR.plugins.FrameTiming.sendBeaconForFrame(window, '04-test');
 			var entries = BOOMR.getVar('restiming');
 

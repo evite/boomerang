@@ -3127,7 +3127,7 @@ BOOMR_check_doc_domain();
 		 * set.
 		 *
 		 * @param {string} name Variable name
-		 * @param {string|object} val Value
+		 * @param {string|object} value Value
 		 * @param {boolean} singleBeacon Whether or not to add to a single beacon
 		 * or all beacons
 		 *
