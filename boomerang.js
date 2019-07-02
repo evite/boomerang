@@ -2998,6 +2998,7 @@ BOOMR_check_doc_domain();
 						// we'll try to send the beacon immediately after it is done.
 						// The beacon will only be sent if one of the handlers has queued it.
 						if (++impl.unloadEventCalled === impl.unloadEventsCount) {
+							BOOMR.addVar('unload', true, true);
 							BOOMR.real_sendBeacon();
 						}
 					};
