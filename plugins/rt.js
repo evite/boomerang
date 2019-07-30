@@ -402,9 +402,10 @@
 				impl.session_exp = subcookies.se;
 			}
 
-			if (subcookies.bcn) {
-				this.beacon_url = subcookies.bcn;
-			}
+			// evite: don't do this - need to be able to change without waiting for cookies to expire
+			// if (subcookies.bcn) {
+			// 	this.beacon_url = subcookies.bcn;
+			// }
 
 			if (subcookies.rl && subcookies.rl === "1") {
 				BOOMR.session.rate_limited = true;
