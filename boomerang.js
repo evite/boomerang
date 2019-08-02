@@ -3147,18 +3147,21 @@ BOOMR_check_doc_domain();
 
 			if (typeof name === "string") {
 				impl.vars[name] = value;
+
+				if (singleBeacon) {
+					impl.singleBeaconVars[name] = 1;
+				}
 			}
 			else if (typeof name === "object") {
 				var o = name, k;
 				for (k in o) {
 					if (o.hasOwnProperty(k)) {
 						impl.vars[k] = o[k];
+						if (value === true) {
+							impl.singleBeaconVars[k] = 1;
+						}
 					}
 				}
-			}
-
-			if (singleBeacon) {
-				impl.singleBeaconVars[name] = 1;
 			}
 
 			return this;
