@@ -3,7 +3,7 @@ BOOMR.init({
 	beacon_url:
 		window.parent && window.parent.BOOMR_config &&
 		window.parent.BOOMR_config.beacon_url ||
-		"https://eventhorizon.evitelabs.com/rum/",
+		"/eventhorizon/rum/",
 	autorun: true,
 	beacon_interval: 60,
 	BW: {enabled: false},
